@@ -50,4 +50,13 @@ public class MemberEntity {
         memberEntity.setMemberName(memberDTO.getMemberName()); // dto에 담긴 name을 entity의 name에 저장
         return memberEntity;
     }
+
+    public static MemberEntity toUpdateMemberEntity(MemberDTO memberDTO) {
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setId(memberDTO.getId()); // save()가 update query를 수행하도록 id 추가
+        memberEntity.setMemberEmail(memberDTO.getMemberEmail()); // dto에 담긴 email을 entity의 email에 저장
+        memberEntity.setMemberPassword(memberDTO.getMemberPassword()); // dto에 담긴 password를 entity의 password에 저장
+        memberEntity.setMemberName(memberDTO.getMemberName()); // dto에 담긴 name을 entity의 name에 저장
+        return memberEntity;
+    }
 }
