@@ -128,10 +128,26 @@ public class MemberController {
         return "redirect:/member/";
     }
 
-    @GetMapping("member/logout")
+    @GetMapping("/member/logout")
     public String logout(HttpSession session) {
         session.invalidate(); // session을 무효화
         return "index";
     }
 
+    // ajax로 email id 중복 체크
+    // ajax 사용 시 @ResponseBody 필수
+    @PostMapping("/member/email-check")
+    public @ResponseBody String emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        System.out.println("memberEmail = " + memberEmail);
+        String checkResult = memberService.emailCheck(memberEmail);
+        return checkResult;
+        /*
+        if (checkResult != null) {
+            return "ok";
+        } else {
+            return "no";
+        }
+
+         */
+    }
 }
